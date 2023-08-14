@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types'; 
+
 import { ContactListContainer, ContactItem } from './ContactList.Styled';
 
 class ContactList extends Component {
@@ -28,5 +30,17 @@ class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  filter: PropTypes.string.isRequired,
+  onContactDelete: PropTypes.func.isRequired,
+};
 
 export default ContactList;

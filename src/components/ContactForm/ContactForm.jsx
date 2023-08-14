@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types'; 
+
 import { nanoid } from 'nanoid';
 
 import { Form, Label, Input, Button } from 'components/App.Styled';
@@ -78,5 +80,16 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onContactAdd: PropTypes.func.isRequired,
+};
 
 export default ContactForm;
